@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Quote Image Generator</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="options">
+        <h2>Upload Image</h2>
+        <input id="image-input" type="file" accept="image/*">
+        <h2>Enter Verse</h2>
+        <input id="verse-input" type="text" placeholder="John 3:16">
+        <button onclick="loadVerse();">Load Verse</button>
+        <label for="include-subtitle">Include subtitle</label>
+        <input type="checkbox" id="include-subtitle" checked>
+        <label>Font Size</label>
+        <input type="range" id="font-size" min="20" max="500" value="60">
+
+        <label>Text Color</label>
+        <input type="color" id="text-color" value="#ffffff">
+
+        <label>Horizontal Align</label>
+        <select id="text-align">
+        <option value="left">Left</option>
+        <option value="center" selected>Center</option>
+        <option value="right">Right</option>
+        </select>
+
+        <label>Aspect Ratio Preset</label>
+        <select id="aspect-ratio">
+        <option value="default">Original</option>
+        <option value="phone-portrait">Phone Portrait (9:16)</option>
+        <option value="phone-landscape">Phone Landscape (16:9)</option>
+        <option value="desktop">Desktop (16:10)</option>
+        <option value="square">Square (1:1)</option>
+        <option value="4:3">4:3</option>
+        <option value="3:4">3:4</option>
+        <option value="3:2">3:2</option>
+        <option value="2:3">2:3</option>
+        </select>
+    </div>
+
+    <div class="result">
+        <canvas id="canvas" width="1000" height="1000"></canvas>
+        <button id="fullscreen-btn">Full Size Preview</button>
+        <button id="download-btn">Download Image</button>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

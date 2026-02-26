@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Quote Image Generator</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Italianno&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="options">
+        <h2>Upload Image</h2>
+        <input id="image-input" type="file" accept="image/*">
+        <button id="default-images-btn">Choose Default Image</button>
+        <h2>Enter Verse</h2>
+        <input id="verse-input" type="text" placeholder="John 3:16">
+        <button onclick="loadVerse();">Load Verse</button>
+        <label for="include-subtitle">Include subtitle</label>
+        <input type="checkbox" id="include-subtitle" checked>
+        <label>Font Size</label>
+        <input type="range" id="font-size" min="20" max="500" value="100">
+
+        <label>Text Color</label>
+        <input type="color" id="text-color" value="#ffffff">
+
+        <label>Font</label>
+        <select id="font">
+        <option value="serif" style="font-family: serif;">Serif</option>
+        <option value="sans-serif" style="font-family: sans-serif;">Sans Serif</option>
+        <option value="EB Garamond" style="font-family: EB Garamond;">EB Garamond</option>
+        <option value="Crimson Text" style="font-family: Crimson Text;">Crimson Text</option>
+        <option value="Tangerine" style="font-family: Tangerine;">Tangerine</option>
+        <option value="Italianno" style="font-family: Italianno;">Italliano</option>
+        </select>
+
+        <label>Horizontal Align</label>
+        <select id="text-align">
+        <option value="left">Left</option>
+        <option value="center" selected>Center</option>
+        <option value="right">Right</option>
+        </select>
+
+        <label>Vertical Align</label>
+        <input type="range" id="vertical-align" min="-100" max="100" value="0">
+
+        <label>Aspect Ratio Preset</label>
+        <select id="aspect-ratio">
+        <option value="default">Original</option>
+        <option value="phone-portrait">Phone Portrait (9:16)</option>
+        <option value="phone-landscape">Phone Landscape (16:9)</option>
+        <option value="desktop">Desktop (16:10)</option>
+        <option value="square">Square (1:1)</option>
+        <option value="4:3">4:3</option>
+        <option value="3:4">3:4</option>
+        <option value="3:2">3:2</option>
+        <option value="2:3">2:3</option>
+        </select>
+    </div>
+
+    <div class="result">
+        <canvas id="canvas" width="1000" height="1000"></canvas>
+        <button id="fullscreen-btn">Full Size Preview</button>
+        <button id="download-btn">Download Image</button>
+    </div>
+
+    <!-- Default Images Modal -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Choose a Default Background Image</h3>
+            <div class="image-grid">
+                <img src="images/beach-sea-coast-water-ocean-horizon-1364695-pxhere.com.jpg" alt="Ocean Sunset" onclick="selectDefaultImage('images/beach-sea-coast-water-ocean-horizon-1364695-pxhere.com.jpg')">
+                <img src="images/book-word-pattern-symbol-religion-church-745063-pxhere.com.jpg" alt="Scripture & Rosary" onclick="selectDefaultImage('images/book-word-pattern-symbol-religion-church-745063-pxhere.com.jpg')">
+                <img src="images/hand-chain-leg-finger-religion-cross-821905-pxhere.com.jpg" alt="Rosary in Hands" onclick="selectDefaultImage('images/hand-chain-leg-finger-religion-cross-821905-pxhere.com.jpg')">
+                <img src="images/image-from-rawpixel-id-426298-original.jpg" alt="Church on a Hill" onclick="selectDefaultImage('images/image-from-rawpixel-id-426298-original.jpg')">
+                <img src="images/landscape-horizon-mountain-cloud-sky-fog-911627-pxhere.com.jpg" alt="Village in a Valley" onclick="selectDefaultImage('images/landscape-horizon-mountain-cloud-sky-fog-911627-pxhere.com.jpg')">
+                <img src="images/landscape-tree-nature-forest-wilderness-mountain-816613-pxhere.com.jpg" alt="Mountain Range" onclick="selectDefaultImage('images/landscape-tree-nature-forest-wilderness-mountain-816613-pxhere.com.jpg')">
+                <img src="images/sea-coast-water-ocean-horizon-cloud-1162238-pxhere.com.jpg" alt="Ocean Wave" onclick="selectDefaultImage('images/sea-coast-water-ocean-horizon-cloud-1162238-pxhere.com.jpg')">
+                <img src="images/sea-ocean-horizon-mountain-snow-cloud-7497-pxhere.com.jpg" alt="Clouds" onclick="selectDefaultImage('images/sea-ocean-horizon-mountain-snow-cloud-7497-pxhere.com.jpg')">
+                <img src="images/tree-nature-monument-statue-green-religion-1090144-pxhere.com.jpg" alt="Crucifix Statue" onclick="selectDefaultImage('images/tree-nature-monument-statue-green-religion-1090144-pxhere.com.jpg')">
+                <img src="images/wilderness-mountain-snow-cloud-fog-sunrise-393914-pxhere.com.jpg" alt="Valley Sunset" onclick="selectDefaultImage('images/wilderness-mountain-snow-cloud-fog-sunrise-393914-pxhere.com.jpg')">
+                <img src="images/window-glass-color-church-cross-death-772154-pxhere.com.jpg" alt="Crucifix Stained Glass" onclick="selectDefaultImage('images/window-glass-color-church-cross-death-772154-pxhere.com.jpg')">
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
